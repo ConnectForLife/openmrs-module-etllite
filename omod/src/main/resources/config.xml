@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module configVersion="1.2">
+
+    <!-- Base Module Properties -->
+    <id>${project.parent.artifactId}</id>
+    <name>${project.parent.name}</name>
+    <version>${project.parent.version}</version>
+    <package>org.openmrs.module.etllite</package>
+    <author>SolDevelo</author>
+    <description>
+        ${project.parent.description}
+    </description>
+
+    <activator>org.openmrs.module.etllite.ETLLiteActivator</activator>
+
+    <!-- <updateURL>https://modules.openmrs.org/modules/download/@MODULE_ID@/update.rdf</updateURL> -->
+    <!-- /Base Module Properties -->
+
+    <require_version>${openmrsPlatformVersion}</require_version>
+
+    <require_modules>
+        <require_module version="${eventVersion}">
+            org.openmrs.event
+        </require_module>
+    </require_modules>
+
+    <aware_of_modules>
+        <aware_of_module>org.openmrs.module.legacyui</aware_of_module>
+        <aware_of_module version="${metadatasharingVersion}">org.openmrs.module.metadatasharing</aware_of_module>
+    </aware_of_modules>
+
+    <filter>
+        <filter-name>ETL lite Authorization</filter-name>
+        <filter-class>org.openmrs.module.etllite.filter.AuthorizationFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ETL lite Authorization</filter-name>
+        <url-pattern>/ws/etllite/*</url-pattern>
+    </filter-mapping>
+
+    <privilege>
+        <name>ETL Settings Privilege</name>
+        <description>Allows user to access ETL Settings</description>
+    </privilege>
+
+    <privilege>
+        <name>ETL Mappings Privilege</name>
+        <description>Allows user to access ETL Mappings</description>
+    </privilege>
+
+    <!-- Internationalization -->
+    <!-- All message codes should start with @MODULE_ID@.* -->
+    <messages>
+        <lang>en</lang>
+        <file>messages.properties</file>
+    </messages>
+
+</module>
+

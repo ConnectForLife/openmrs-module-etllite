@@ -1,0 +1,19 @@
+{
+  "version": "0.1.0",
+  "name": "etllite",
+  "description": "OWA project for ETL Lite Module",
+  "launch_path": "index.html",
+  "icons": {
+    "48": "/img/omrs-button.png"
+  },
+  "developer": {
+    "name": "user",
+    "url": "https://bitbucket.org/soldevelo/omrs-etl"
+  },
+  "default_locale": "en",
+    "activities": {
+      "openmrs": {
+        "href": "*"
+      }
+    }
+}
