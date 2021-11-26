@@ -18,6 +18,8 @@ import java.util.Objects;
 @Table(name = "etl_error_logs")
 public class ErrorLog extends AbstractBaseOpenmrsData {
 
+    private static final long serialVersionUID = 1333814382677313866L;
+
     @Id
     @GeneratedValue
     @Column(name = "etl_error_logs_id")
