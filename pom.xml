@@ -33,7 +33,6 @@
         <openmrsPlatformVersion>2.0.1</openmrsPlatformVersion>
         <javaCompilerSource>1.8</javaCompilerSource>
         <javaCompilerTarget>1.8</javaCompilerTarget>
-        <swaggerCore.version>1.5.4</swaggerCore.version>
         <gsonVersion>1.7.1</gsonVersion>
         <guavaVersion>18.0</guavaVersion>
         <eventVersion>2.8.0</eventVersion>
@@ -49,6 +48,8 @@
         <pmdPluginSkip>false</pmdPluginSkip>
         <mssqlDriverVersion>7.4.1.jre8</mssqlDriverVersion>
         <metadatasharingVersion>1.6.0</metadatasharingVersion>
+        <uiframeworkVersion>3.4</uiframeworkVersion>
+        <swaggerCore.version>1.6.2</swaggerCore.version>
     </properties>
 
     <dependencyManagement>
@@ -65,10 +66,11 @@
                     </exclusion>
                 </exclusions>
             </dependency>
+            <!-- Swagger dependencies-->
             <dependency>
                 <groupId>io.swagger</groupId>
                 <artifactId>swagger-core</artifactId>
-                <scope>compile</scope>
+                <scope>provided</scope>
                 <version>${swaggerCore.version}</version>
                 <exclusions>
                     <exclusion>
@@ -78,6 +80,10 @@
                     <exclusion>
                         <groupId>javax.validation</groupId>
                         <artifactId>validation-api</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-api</artifactId>
                     </exclusion>
                 </exclusions>
             </dependency>
