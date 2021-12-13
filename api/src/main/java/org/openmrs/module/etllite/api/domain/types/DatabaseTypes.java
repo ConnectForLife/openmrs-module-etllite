@@ -15,7 +15,7 @@ public enum DatabaseTypes {
 
     private final String name;
 
-    private DatabaseTypes(final String name) {
+    DatabaseTypes(final String name) {
         this.name = name;
     }
 

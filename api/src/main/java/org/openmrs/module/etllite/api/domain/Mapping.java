@@ -24,6 +24,8 @@ import static org.openmrs.module.etllite.api.constants.Constants.MYSQL_TEXT_DATA
         uniqueConstraints = @UniqueConstraint(name = "UNIQUE_ETL_MAPPING_IDX", columnNames = {"name", "source"}))
 public class Mapping extends BaseOpenmrsMetadata {
 
+    private static final long serialVersionUID = -1473402788029598370L;
+
     private static final String TEXT = "text";
 
     @Id

@@ -6,6 +6,8 @@ import org.openmrs.BaseOpenmrsData;
 
 public abstract class AbstractBaseOpenmrsData extends BaseOpenmrsData {
 
+    private static final long serialVersionUID = -7686632227984082024L;
+
     private static final String ID_FIELD_NAME = "id";
 
     @Override
