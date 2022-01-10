@@ -20,6 +20,7 @@ import OpenMRSModal from './OpenMRSModal';
 import Mapping from './Mapping';
 import { getIntl } from "@openmrs/react-components/lib/components/localization/withLocalization";
 import * as Default from '../utils/messages';
+import DOMPurify from 'dompurify';
 
 export class Mappings extends React.Component {
 
@@ -92,19 +93,37 @@ export class Mappings extends React.Component {
 
         {this.props.mappings.map(item => {
           return (
-            <Accordion title={`${getIntl().formatMessage({ id: 'ETL_MAPPING_NAME_PREFIX', defaultMessage: Default.ETL_MAPPING_NAME_PREFIX })} 
-              ${item.name ? item.name : getIntl().formatMessage({ id: 'ETL_MAPPING_NOT_SAVED', defaultMessage: Default.ETL_MAPPING_NOT_SAVED })}`}
-              border={true} open={item.isOpen} key={item.uiLocalUuid}>
-              <div ref={(div) => {
-                if (item.isOpen) {
-                  item.isOpen = null;
-                  this.newEntry = div;
-                }
-              }}>
-                <Mapping mapping={item} onChange={this.props.changeMapping} sources={this.props.sources}
-                  createMapping={this.props.createMapping} updateMapping={this.props.updateMapping}
+            <Accordion
+              title={`${getIntl().formatMessage({
+                id: 'ETL_MAPPING_NAME_PREFIX',
+                defaultMessage: Default.ETL_MAPPING_NAME_PREFIX,
+              })} 
+              ${
+                DOMPurify.sanitize(item.name) ??
+                getIntl().formatMessage({ id: 'ETL_MAPPING_NOT_SAVED', defaultMessage: Default.ETL_MAPPING_NOT_SAVED })
+              }`}
+              border={true}
+              open={DOMPurify.sanitize(item.isOpen)}
+              key={DOMPurify.sanitize(item.uiLocalUuid)}
+            >
+              <div
+                ref={(div) => {
+                  if (DOMPurify.sanitize(item.isOpen)) {
+                    item.isOpen = null;
+                    this.newEntry = div;
+                  }
+                }}
+              >
+                <Mapping
+                  mapping={item}
+                  onChange={this.props.changeMapping}
+                  sources={this.props.sources}
+                  createMapping={this.props.createMapping}
+                  updateMapping={this.props.updateMapping}
                   removeMapping={this.removeMapping}
-                  testMapping={this.props.testMapping} onTestableChange={this.props.changeTestable} />
+                  testMapping={this.props.testMapping}
+                  onTestableChange={this.props.changeTestable}
+                />
               </div>
             </Accordion>
           );
